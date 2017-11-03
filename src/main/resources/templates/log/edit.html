@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Edit Log</title>
+</head>
+<body>
+<h1>Edit Log</h1>
+<a th:href="@{/logs}">Back</a>
+<form th:action="@{'/logs/'+${log.id.value}}" th:object="${log}" method="post">
+    <label>Occurred at</label>
+    <input type="text" th:field="*{occurredAt.value}" th:errorclass="error"/>
+    <ul th:if="${#fields.hasErrors('occurredAt.value')}">
+        <li th:each="e : ${#fields.errors('occurredAt.value')}" th:text="${e}"></li>
+    </ul>
+
+    <label>Memo</label>
+    <input type="text" th:field="*{memo.value}" th:errorclass="error"/>
+    <ul th:if="${#fields.hasErrors('memo.value')}">
+        <li th:each="e : ${#fields.errors('memo.value')}" th:text="${e}"></li>
+    </ul>
+
+    <input type="submit" value="Submit"/>
+</form>
+<form th:action="@{'/logs/'+${log.id.value}}+'/delete'" th:object="${log}" method="post">
+    <input type="submit" value="Delete"/>
+</form>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Logs</title>
+</head>
+<body>
+<h1>Logs</h1>
+<a th:href="@{/logs/new}">+</a>
+<div th:each="log : ${logs}">
+    <div th:text="${log.memo.asText()}"></div>
+    <div th:text="${log.occurredAt.asText()}"></div>
+    <div th:text="${log.createdAt.asText()}"></div>
+    <a th:href="@{'/logs/'+${log.id.value}}">Edit</a>
+</div>
+</body>
+</html>
