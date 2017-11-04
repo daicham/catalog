@@ -4,6 +4,17 @@
     <meta charset="UTF-8"/>
 </head>
 <body>
+    <div th:fragment="type" class="form-group">
+        <label for="type" class="control-label col-md-2">Type</label>
+        <div class="col-md-10">
+           <select class="form-control" th:field="*{type}">
+               <option th:each="type : ${types}"
+                       th:value="${type}"
+                       th:text="${type.asText()}">Pee</option>
+           </select>
+        </div>
+    </div>
+
     <div th:fragment="occurred_at" class="form-group" th:classappend="${#fields.hasErrors('occurredAt.value')}? has-error">
         <label for="occurredAt.value" class="control-label col-md-2">Occurred at</label>
         <div class="col-md-10">

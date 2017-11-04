@@ -5,12 +5,17 @@ package com.daicham.catlog.domain.model.log;
  */
 public class Log {
     LogId id;
+    LogType type;
     Memo memo;
     OccurredAt occurredAt;
     CreatedAt createdAt;
 
     public LogId getId() {
         return id;
+    }
+
+    public LogType getType() {
+        return type;
     }
 
     public Memo getMemo() {

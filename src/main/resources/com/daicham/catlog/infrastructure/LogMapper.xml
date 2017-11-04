@@ -3,25 +3,26 @@
 <mapper namespace="com.daicham.catlog.infrastructure.LogMapper">
     <resultMap id="log" type="com.daicham.catlog.domain.model.log.Log">
         <id column="id" property="id.value"/>
+        <result column="type" property="type"/>
         <result column="occurred_at" property="occurredAt.value"/>
         <result column="created_at" property="createdAt.value"/>
         <result column="memo" property="memo.value"/>
     </resultMap>
 
     <select id="findBy" resultMap="log">
-        SELECT id, memo, occurred_at, created_at FROM logs WHERE id = #{id.value}
+        SELECT id, type, memo, occurred_at, created_at FROM logs WHERE id = #{id.value}
     </select>
 
     <select id="findRecent" resultMap="log">
-        SELECT id, memo, occurred_at, created_at FROM logs ORDER BY created_at DESC LIMIT 10
+        SELECT id, type, memo, occurred_at, created_at FROM logs ORDER BY created_at DESC LIMIT 10
     </select>
 
     <insert id="register">
-        INSERT INTO logs(memo, occurred_at, created_at) VALUES (#{log.memo.value}, #{log.occurredAt.value}, now())
+        INSERT INTO logs(type, memo, occurred_at, created_at) VALUES (#{log.type}, #{log.memo.value}, #{log.occurredAt.value}, now())
     </insert>
 
     <update id="update">
-        UPDATE logs SET memo = #{log.memo.value}, occurred_at = #{log.occurredAt.value} WHERE id = #{log.id.value}
+        UPDATE logs SET type = #{log.type}, memo = #{log.memo.value}, occurred_at = #{log.occurredAt.value} WHERE id = #{log.id.value}
     </update>
 
     <delete id="delete">

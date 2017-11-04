@@ -1,11 +1,12 @@
 package com.daicham.catlog.application.service;
 
-import com.daicham.catlog.domain.model.log.Log;
-import com.daicham.catlog.domain.model.log.LogId;
-import com.daicham.catlog.domain.model.log.Logs;
-import com.daicham.catlog.domain.model.log.LogRepository;
+import com.daicham.catlog.domain.model.log.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author daicham
@@ -33,5 +34,9 @@ public class LogService {
 
     public void delete(LogId id) {
         repository.delete(id);
+    }
+
+    public List<LogType> allTypes() {
+        return Arrays.asList(LogType.values());
     }
 }

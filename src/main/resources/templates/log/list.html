@@ -16,7 +16,7 @@
             <div class="media" th:each="log : ${logs}">
                <div class="media-left">
                    <a th:href="@{'/logs/'+${log.id.value}}">
-                       <img class="media-object" th:src="@{/images/poo_64.png}" alt="image"/>
+                       <img class="media-object" th:src="@{${log.type.asImagePath()}}" th:alt="${log.type}"/>
                    </a>
                </div>
                <div class="media-body">

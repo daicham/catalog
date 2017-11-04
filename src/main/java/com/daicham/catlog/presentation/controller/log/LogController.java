@@ -3,6 +3,7 @@ package com.daicham.catlog.presentation.controller.log;
 import com.daicham.catlog.application.service.LogService;
 import com.daicham.catlog.domain.model.log.Log;
 import com.daicham.catlog.domain.model.log.LogId;
+import com.daicham.catlog.domain.model.log.LogType;
 import com.daicham.catlog.domain.model.log.Logs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * @author daicham
@@ -21,6 +23,11 @@ public class LogController {
 
     @Autowired
     LogService service;
+
+    @ModelAttribute("types")
+    public List<LogType> types() {
+        return service.allTypes();
+    }
 
     @GetMapping
     public String list(Model model) {
