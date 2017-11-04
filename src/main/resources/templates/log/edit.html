@@ -8,6 +8,9 @@
     <div layout:fragment="header">
         <h1>Edit log</h1>
     </div>
+    <div layout:fragment="left">
+        <a th:href="@{/logs}">&lt; Back</a>
+    </div>
     <div layout:fragment="content">
         <form action="#" method="post" class="form-horizontal"
               th:action="@{/logs/{id}(id=${log.id.value})}" th:object="${log}">
@@ -24,9 +27,6 @@
                 </div>
             </div>
         </form>
-    </div>
-    <div layout:fragment="left">
-        <a th:href="@{/logs}">&lt; Back</a>
     </div>
 </body>
 </html>

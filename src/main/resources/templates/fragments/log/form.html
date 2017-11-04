@@ -4,26 +4,26 @@
     <meta charset="UTF-8"/>
 </head>
 <body>
-    <div th:fragment="occurred_at" class="form-group">
+    <div th:fragment="occurred_at" class="form-group" th:classappend="${#fields.hasErrors('occurredAt.value')}? has-error">
         <label for="occurredAt.value" class="control-label col-md-2">Occurred at</label>
         <div class="col-md-10">
             <input type="text" class="form-control" placeholder="Occurred at"
-                   th:field="*{occurredAt.value}" th:errorclass="error"/>
+                   th:field="*{occurredAt.value}"/>
+            <ul class="help-block" th:if="${#fields.hasErrors('occurredAt.value')}">
+                <li th:each="e : ${#fields.errors('occurredAt.value')}" th:text="${e}"></li>
+            </ul>
         </div>
-        <ul th:if="${#fields.hasErrors('occurredAt.value')}">
-            <li th:each="e : ${#fields.errors('occurredAt.value')}" th:text="${e}"></li>
-        </ul>
     </div>
 
-    <div th:fragment="memo" class="form-group">
+    <div th:fragment="memo" class="form-group" th:classappend="${#fields.hasErrors('memo.value')}? has-error">
         <label for="memo.value" class="control-label col-md-2">Memo</label>
         <div class="col-md-10">
             <input type="text" class="form-control" placeholder="Memo"
                    th:field="*{memo.value}" th:errorclass="error"/>
+            <ul class="help-block" th:if="${#fields.hasErrors('memo.value')}">
+                <li th:each="e : ${#fields.errors('memo.value')}" th:text="${e}"></li>
+            </ul>
         </div>
-        <ul th:if="${#fields.hasErrors('memo.value')}">
-            <li th:each="e : ${#fields.errors('memo.value')}" th:text="${e}"></li>
-        </ul>
     </div>
 
     <div th:fragment="submit(label)" class="form-group">

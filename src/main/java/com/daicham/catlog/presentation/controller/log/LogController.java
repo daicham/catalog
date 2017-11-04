@@ -51,7 +51,10 @@ public class LogController {
     }
 
     @PostMapping("{id:[0-9]+}")
-    public String update(@Valid Log log) {
+    public String update(@Valid Log log, BindingResult result) {
+        if (result.hasErrors()) {
+            return "log/edit";
+        }
         service.update(log);
         return redirectToList();
     }

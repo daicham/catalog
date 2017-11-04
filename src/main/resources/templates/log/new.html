@@ -1,26 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="fragments/layout">
 <head>
-    <meta charset="UTF-8"/>
     <title>New Log</title>
 </head>
 <body>
-<h1>New Log</h1>
-<a th:href="@{/logs}">Back</a>
-<form th:action="@{/logs/new}" th:object="${log}" method="post">
-    <label>Occurred at</label>
-    <input type="text" th:field="*{occurredAt.value}" th:errorclass="error"/>
-    <ul th:if="${#fields.hasErrors('occurredAt.value')}">
-        <li th:each="e : ${#fields.errors('occurredAt.value')}" th:text="${e}"></li>
-    </ul>
-
-    <label>Memo</label>
-    <input type="text" th:field="*{memo.value}" th:errorclass="error"/>
-    <ul th:if="${#fields.hasErrors('memo.value')}">
-        <li th:each="e : ${#fields.errors('memo.value')}" th:text="${e}"></li>
-    </ul>
-
-    <input type="submit" value="Submit"/>
-</form>
+    <div layout:fragment="header">
+        <h1>New Log</h1>
+    </div>
+    <div layout:fragment="left">
+        <a th:href="@{/logs}">&lt; Back</a>
+    </div>
+    <div layout:fragment="content">
+        <form action="#" method="post" class="form-horizontal"
+              th:action="@{/logs/new}" th:object="${log}">
+            <div th:replace="fragments/log/form :: occurred_at"/>
+            <div th:replace="fragments/log/form :: memo"/>
+            <div th:replace="fragments/log/form :: submit('Submit')"/>
+        </form>
+    </div>
 </body>
 </html>
