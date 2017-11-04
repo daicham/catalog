@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title layout:title-pattern="$CONTENT_TITLE - $DECORATOR_TITLE">CatLog</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div layout:fragment="header" class="col-md-12"/>
+        </div>
+        <div class="row">
+            <div layout:fragment="left" class="col-md-2"/>
+            <div layout:fragment="content" class="col-md-8">
+                <!--/* Page content goes here */-->
+            </div>
+            <div layout:fragment="right" class="col-md-2"/>
+        </div>
+        <div class="row" style="text-align: center">
+            <hr/>
+            &copy; 2017 daicham.com
+        </div>
+    </div>
+</body>
+</html>

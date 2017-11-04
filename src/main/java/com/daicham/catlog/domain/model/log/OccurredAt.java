@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
  */
 public class OccurredAt {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    LocalDateTime value;
+    LocalDateTime value = LocalDateTime.now();
 
     public String asText() {
         return value.format(DateTimeFormatter.ISO_DATE_TIME);

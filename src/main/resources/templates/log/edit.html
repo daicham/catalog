@@ -1,29 +1,32 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="fragments/layout">
 <head>
-    <meta charset="UTF-8"/>
-    <title>Edit Log</title>
+    <title>Edit log</title>
 </head>
 <body>
-<h1>Edit Log</h1>
-<a th:href="@{/logs}">Back</a>
-<form th:action="@{'/logs/'+${log.id.value}}" th:object="${log}" method="post">
-    <label>Occurred at</label>
-    <input type="text" th:field="*{occurredAt.value}" th:errorclass="error"/>
-    <ul th:if="${#fields.hasErrors('occurredAt.value')}">
-        <li th:each="e : ${#fields.errors('occurredAt.value')}" th:text="${e}"></li>
-    </ul>
-
-    <label>Memo</label>
-    <input type="text" th:field="*{memo.value}" th:errorclass="error"/>
-    <ul th:if="${#fields.hasErrors('memo.value')}">
-        <li th:each="e : ${#fields.errors('memo.value')}" th:text="${e}"></li>
-    </ul>
-
-    <input type="submit" value="Submit"/>
-</form>
-<form th:action="@{'/logs/'+${log.id.value}}+'/delete'" th:object="${log}" method="post">
-    <input type="submit" value="Delete"/>
-</form>
+    <div layout:fragment="header">
+        <h1>Edit log</h1>
+    </div>
+    <div layout:fragment="content">
+        <form action="#" method="post" class="form-horizontal"
+              th:action="@{/logs/{id}(id=${log.id.value})}" th:object="${log}">
+            <div th:replace="fragments/log/form :: occurred_at"/>
+            <div th:replace="fragments/log/form :: memo"/>
+            <div th:replace="fragments/log/form :: submit('Submit')"/>
+        </form>
+        <hr/>
+        <form action="#" method="post" class="form-horizontal"
+              th:action="@{/logs/{id}/delete(id=${log.id.value})}">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Delete" class="btn btn-danger"/>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div layout:fragment="left">
+        <a th:href="@{/logs}">&lt; Back</a>
+    </div>
 </body>
 </html>

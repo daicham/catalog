@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+    <div th:fragment="occurred_at" class="form-group">
+        <label for="occurredAt.value" class="control-label col-md-2">Occurred at</label>
+        <div class="col-md-10">
+            <input type="text" class="form-control" placeholder="Occurred at"
+                   th:field="*{occurredAt.value}" th:errorclass="error"/>
+        </div>
+        <ul th:if="${#fields.hasErrors('occurredAt.value')}">
+            <li th:each="e : ${#fields.errors('occurredAt.value')}" th:text="${e}"></li>
+        </ul>
+    </div>
+
+    <div th:fragment="memo" class="form-group">
+        <label for="memo.value" class="control-label col-md-2">Memo</label>
+        <div class="col-md-10">
+            <input type="text" class="form-control" placeholder="Memo"
+                   th:field="*{memo.value}" th:errorclass="error"/>
+        </div>
+        <ul th:if="${#fields.hasErrors('memo.value')}">
+            <li th:each="e : ${#fields.errors('memo.value')}" th:text="${e}"></li>
+        </ul>
+    </div>
+
+    <div th:fragment="submit(label)" class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-primary" th:value="${label}"/>
+        </div>
+    </div>
+</body>
+</html>
