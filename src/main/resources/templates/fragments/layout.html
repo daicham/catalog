@@ -10,6 +10,9 @@
 <body>
     <div class="container">
         <div class="row">
+            <div th:text="${owner.asTextWithFamily()}"></div>
+        </div>
+        <div class="row">
             <div layout:fragment="header" class="col-md-12"/>
         </div>
         <div class="row">
@@ -19,8 +22,8 @@
             </div>
             <div layout:fragment="right" class="col-md-2"/>
         </div>
+        <hr/>
         <div class="row" style="text-align: center">
-            <hr/>
             &copy; 2017 daicham.com
         </div>
     </div>
