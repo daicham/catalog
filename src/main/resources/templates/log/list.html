@@ -10,6 +10,14 @@
     </div>
     <div layout:fragment="left">
         <a th:href="@{/logs/new}">+</a>
+        <form th:action="@{/logs/new}" method="post">
+            <input type="hidden" name="type" value="PEE"/>
+            <input type="submit" value="+Pee"/>
+        </form>
+        <form th:action="@{/logs/new}" method="post">
+            <input type="hidden" name="type" value="POO"/>
+            <input type="submit" value="+Poo"/>
+        </form>
     </div>
     <div layout:fragment="content">
         <div class="media-list">

@@ -10,6 +10,11 @@ public class Log {
     OccurredAt occurredAt;
     CreatedAt createdAt;
 
+    public Log() {
+        this.occurredAt = new OccurredAt();
+        this.memo = new Memo();
+    }
+
     public LogId getId() {
         return id;
     }

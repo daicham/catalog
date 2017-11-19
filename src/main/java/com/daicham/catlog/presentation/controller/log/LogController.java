@@ -1,10 +1,7 @@
 package com.daicham.catlog.presentation.controller.log;
 
 import com.daicham.catlog.application.service.LogService;
-import com.daicham.catlog.domain.model.log.Log;
-import com.daicham.catlog.domain.model.log.LogId;
-import com.daicham.catlog.domain.model.log.LogType;
-import com.daicham.catlog.domain.model.log.Logs;
+import com.daicham.catlog.domain.model.log.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
