@@ -6,33 +6,29 @@
 </head>
 <body>
     <div layout:fragment="header">
-        <h1>Logs</h1>
+        <div class="page-header">
+            <h1>Log <small>ななちゃん</small></h1>
+        </div>
     </div>
-    <div layout:fragment="left">
-        <a th:href="@{/logs/new}">+</a>
-        <form th:action="@{/logs/new}" method="post">
-            <input type="hidden" name="type" value="PEE"/>
-            <input type="submit" value="+Pee"/>
-        </form>
-        <form th:action="@{/logs/new}" method="post">
-            <input type="hidden" name="type" value="POO"/>
-            <input type="submit" value="+Poo"/>
-        </form>
-    </div>
+
     <div layout:fragment="content">
         <div class="media-list">
             <div class="media" th:each="log : ${logs}">
+               <a th:href="@{'/logs/'+${log.id.value}}">
                <div class="media-left">
-                   <a th:href="@{'/logs/'+${log.id.value}}">
                        <img class="media-object" th:src="@{${log.type.asImagePath()}}" th:alt="${log.type}"/>
-                   </a>
                </div>
                <div class="media-body">
                    <h4 class="media-heading" th:text="${log.occurredAt.asText()}"></h4>
                    <div th:text="${log.memo.asText()}"></div>
                </div>
+               </a>
             </div>
         </div>
+    </div>
+
+    <div layout:fragment="bottom">
+        <div th:replace="fragments/navbar :: bottom"/>
     </div>
 </body>
 </html>

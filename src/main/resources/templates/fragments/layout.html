@@ -6,26 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title layout:title-pattern="$CONTENT_TITLE - $DECORATOR_TITLE">CatLog</title>
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <style>
+        #header { margin-top: 10px; }
+    </style>
 </head>
 <body>
+    <div th:replace="fragments/navbar :: top"/>
     <div class="container">
         <div class="row">
-            <div th:text="${owner.asTextWithFamily()}"></div>
+            <div layout:fragment="header" id="header" class="col-xs-12 col-md-12"/>
         </div>
         <div class="row">
-            <div layout:fragment="header" class="col-md-12"/>
+            <div layout:fragment="left" class="col-xs-12 col-md-2"/>
+            <div layout:fragment="content" class="col-xs-12 col-md-8"/>
+            <div layout:fragment="right" class="col-xs-12 col-md-2"/>
         </div>
         <div class="row">
-            <div layout:fragment="left" class="col-md-2"/>
-            <div layout:fragment="content" class="col-md-8">
-                <!--/* Page content goes here */-->
-            </div>
-            <div layout:fragment="right" class="col-md-2"/>
+            <div layout:fragment="bottom" id="bottom" class="col-xs-12 col-md-12"/>
         </div>
-        <hr/>
         <div class="row" style="text-align: center">
+            <hr/>
             &copy; 2017 daicham.com
         </div>
     </div>
+    <!--<div th:replace="fragments/navbar :: bottom"/>-->
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
 </body>
 </html>
