@@ -2,19 +2,18 @@ package com.daicham.catlog.domain.model.owner;
 
 import com.daicham.catlog.domain.model.cat.Cat;
 
-import java.util.Objects;
-
 /**
  * @author daicham
  */
 public class Owner {
-    Name name = new Name();
-    Family family = new Family();
-    Cat cat = new Cat();
+    Name name;
+    Family family;
+    Cat cat;
 
-    public Owner(String givenName, String familyName) {
-        this.name = new Name(givenName);
-        this.family = new Family(familyName);
+    public Owner(Name name) {
+        this.name = name;
+        this.family = new Family();
+        this.cat = new Cat();
     }
 
     public Name getName() {

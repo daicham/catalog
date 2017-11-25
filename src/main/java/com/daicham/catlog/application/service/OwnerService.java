@@ -1,5 +1,6 @@
 package com.daicham.catlog.application.service;
 
+import com.daicham.catlog.domain.model.owner.Name;
 import com.daicham.catlog.domain.model.owner.Owner;
 import com.daicham.catlog.domain.model.owner.OwnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class OwnerService {
     OwnerRepository ownerRepository;
 
     //TODO: rename to better one
-    public Owner findOne() {
-        return ownerRepository.findOne();
+    public Owner buildOwner(Name name) {
+        return ownerRepository.findByName(name);
     }
 }
