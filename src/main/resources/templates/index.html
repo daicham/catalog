@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="fragments/layout">
+<head>
+    <title>Top</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="jumbotron" style="margin-top: 50px">
+        <h2>Welcome to CatLog!</h2>
+        <a class="btn btn-primary btn-lg" th:href="@{/login}">Login with Google</a>
+    </div>
+</div>
+</body>
+</html>
